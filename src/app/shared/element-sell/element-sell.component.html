@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>Vender Cryptomoeda</h1>
+<div mat-dialog-content>
+  <!-- <mat-form-field appearance="fill">
+    <mat-label>Position</mat-label>
+    <input matInput [(ngModel)]="data.position" readonly>
+  </mat-form-field> -->
+  <mat-form-field appearance="fill">
+    <mat-label>Codigo</mat-label>
+    <input matInput [(ngModel)]="data.codigo" readonly>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Nome</mat-label>
+    <input matInput [(ngModel)]="data.nome" readonly>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>cotacao_compra</mat-label>
+    <input matInput [(ngModel)]="data.valorCompra" readonly>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>cotacao_venda</mat-label>
+    <input matInput [(ngModel)]="data.valorVenda" readonly>
+  </mat-form-field>
+  <!-- <mat-form-field appearance="fill">
+    <mat-label>variacao</mat-label>
+    <input matInput [(ngModel)]="data.variacao">
+  </mat-form-field> -->
+  <mat-form-field appearance="fill">
+    <mat-label>quantidade</mat-label>
+    <input matInput [(ngModel)]="data.quantidade">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Vender</button>
+</div>

@@ -1,0 +1,70 @@
+<div class="container">
+    <h1>Minha Carteira</h1>
+    <!-- <button mat-button color="primary" (click)="openDialog(null)">Add Element</button> -->
+    <button mat-button color="primary" (click)="navigateToHome()">Comprar Cryptomoedas</button>
+    
+        <table mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+            <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+        
+            <!-- Position Column -->
+            <!-- <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            </ng-container> -->
+            
+            <!-- codigo Column -->
+            <ng-container matColumnDef="codigo">
+            <th mat-header-cell *matHeaderCellDef> Código </th>
+            <td mat-cell *matCellDef="let element"> {{element.crypto.codigo}} </td>
+            </ng-container>    
+    
+            <!-- nome Column -->
+            <ng-container matColumnDef="nome">
+            <th mat-header-cell *matHeaderCellDef> Nome </th>
+            <td mat-cell *matCellDef="let element"> {{element.crypto.nome}} </td>
+            </ng-container>
+        
+            <!-- cotacao_compra Column -->
+            <ng-container matColumnDef="cotacao_compra">
+            <th mat-header-cell *matHeaderCellDef> Cotação Compra </th>
+            <td mat-cell *matCellDef="let element"> {{element.crypto.valorCompra}} </td>
+            </ng-container>
+        
+            <!-- cotacao_venda Column -->
+            <ng-container matColumnDef="cotacao_venda">
+            <th mat-header-cell *matHeaderCellDef> Cotação Venda </th>
+            <td mat-cell *matCellDef="let element"> {{element.crypto.valorVenda}} </td>
+            </ng-container>
+        
+            <!-- variacao Column -->
+            <!-- <ng-container matColumnDef="variacao">
+            <th mat-header-cell *matHeaderCellDef> Variacao </th>
+            <td mat-cell *matCellDef="let element"> {{element.variacao}} </td>
+            </ng-container> -->
+
+            <!-- quantidade Column -->
+            <ng-container matColumnDef="quantidade">
+            <th mat-header-cell *matHeaderCellDef> Quantidade </th>
+            <td mat-cell *matCellDef="let element"> {{element.quantidade}} </td>
+            </ng-container>
+    
+            <!-- vender Column -->
+            <ng-container matColumnDef="vender">
+                <th mat-header-cell *matHeaderCellDef> Vender </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button (click)="sellElement(element)" color="primary">
+                        <mat-icon>sell</mat-icon>
+                    </button>
+                    <!--<button mat-icon-button (click)="deleteElement(element.id)" color="primary" >
+                        <mat-icon>delete</mat-icon>
+                    </button>--> 
+                </td>
+                </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+      
