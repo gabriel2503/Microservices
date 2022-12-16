@@ -18,6 +18,9 @@
 
 #### 1.2 Rodar API para carregar a carteira de Criptomoedas conforme instruções do readme.md em github.com/FabioQuimico/carteira-cryptos-spring
 
+### Executar npm: Seguir Passo 2 
+### Executar Docker: Seguir Passo 3
+
 ### PASSO 2: Executar aplicação com os comandos
 
 ```bash
@@ -26,6 +29,18 @@ npm install
 npm run start
 ```
 
+### PASSO 3: Executar aplicação com DOCKER
+
+```bash
+cd crypto
+construir imagem comando: docker build -t crypto:v1 .
+cd docker
+executar imagem comando: docker-compose up
+```
+
 ## Acesso à aplicação
 
-localhost:4200
+```bash
+local: localhost:4200
+docker: localhost:8099
+```
