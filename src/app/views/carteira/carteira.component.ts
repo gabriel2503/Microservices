@@ -80,7 +80,7 @@ export class CarteiraComponent implements OnInit {
      //     this.dataSource[result.position - 1] = result;
       //    this.table.renderRows();
       //  } else {
-          this.carteiraCryptoElementService.vendaCrypto(1, result)
+          this.carteiraCryptoElementService.vendaCrypto(result)
           .subscribe((data: ClienteCrypto)=> {
             this.dataSource.push(result);
             this.table.renderRows();

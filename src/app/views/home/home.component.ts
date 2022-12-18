@@ -85,7 +85,7 @@ export class HomeComponent implements OnInit {
      //     this.dataSource[result.position - 1] = result;
        //   this.table.renderRows();
         //} else {
-          this.carteiraCryptoElementService.compraCrypto(1, result)
+          this.carteiraCryptoElementService.compraCrypto(result)
           .subscribe((data: ClienteCrypto)=> {
             this.dataSource.push(result);
             this.table.renderRows();

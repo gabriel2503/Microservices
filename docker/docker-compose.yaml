@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   microservices:
-    image: crypto:v1
-    container_name: crypto1
+    image: gabrielobarbosa/crypto:v2
+    container_name: cryptov2
     ports:
       - "8099:80"

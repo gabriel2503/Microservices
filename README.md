@@ -33,9 +33,13 @@ npm run start
 
 ```bash
 cd crypto
-construir imagem comando: docker build -t crypto:v1 .
 cd docker
 executar imagem comando: docker-compose up
+```
+
+## Imagem Docker Hub
+```bash
+gabrielobarbosa/crypto:v2
 ```
 
 ## Acesso à aplicação

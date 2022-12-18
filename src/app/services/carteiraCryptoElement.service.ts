@@ -15,11 +15,30 @@ export class CarteiraCryptoElementService {
         return this.http.get<ClienteCrypto[]>(`${this.elementApiUrl}/cliente/${id}/cryptos`);
     }
 
-    compraCrypto(id: number, element: ClienteCrypto): Observable<ClienteCrypto> {
-        return this.http.post<ClienteCrypto>(`${this.elementApiUrl}/cliente/${id}/compra`, element)
+    compraCrypto(element: ClienteCrypto): Observable<ClienteCrypto> {
+        return this.http.post<ClienteCrypto>(`${this.elementApiUrl}/cliente/compra`, element)
     }
 
-    vendaCrypto(id: number, element: ClienteCrypto): Observable<ClienteCrypto> {
-        return this.http.post<ClienteCrypto>(`${this.elementApiUrl}/cliente/${id}/venda`, element)
+    vendaCrypto(element: ClienteCrypto): Observable<ClienteCrypto> {
+        return this.http.post<ClienteCrypto>(`${this.elementApiUrl}/cliente/venda`, element)
     }
 }
+
+// chamada antiga
+// export class CarteiraCryptoElementService {
+//     elementApiUrl = '/api'
+//     // id = 1;
+//     constructor(private http: HttpClient) { }
+
+//     getClienteCrypto(id: number): Observable<ClienteCrypto[]> {
+//         return this.http.get<ClienteCrypto[]>(`${this.elementApiUrl}/cliente/${id}/cryptos`);
+//     }
+
+//     compraCrypto(id: number, element: ClienteCrypto): Observable<ClienteCrypto> {
+//         return this.http.post<ClienteCrypto>(`${this.elementApiUrl}/cliente/${id}/compra`, element)
+//     }
+
+//     vendaCrypto(id: number, element: ClienteCrypto): Observable<ClienteCrypto> {
+//         return this.http.post<ClienteCrypto>(`${this.elementApiUrl}/cliente/${id}/venda`, element)
+//     }
+// }
