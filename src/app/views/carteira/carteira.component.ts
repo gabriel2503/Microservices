@@ -2,7 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { Console } from 'console';
 import { ClienteCrypto } from 'src/app/models/ClienteCrypto';
+import { Crypto } from 'src/app/models/Crypto';
+import { Transacao } from 'src/app/models/Transacao';
+
 import { CarteiraCryptoElementService } from 'src/app/services/carteiraCryptoElement.service';
 import { ElementSellComponent } from 'src/app/shared/element-sell/element-sell.component';
 
@@ -32,15 +36,15 @@ export class CarteiraComponent implements OnInit {
   @ViewChild(MatTable)
   table!: MatTable<any>;
   displayedColumns: string[] = [ 'codigo', 'nome', 'cotacao_compra', 'cotacao_venda', 'quantidade', 'vender'];
-  dataSource!: ClienteCrypto[];
+  dataSource!: Crypto[];
  
   constructor(public dialog: MatDialog, 
     private router: Router,
     public carteiraCryptoElementService: CarteiraCryptoElementService
     ) {
       this.carteiraCryptoElementService.getClienteCrypto(1)
-      .subscribe((data: ClienteCrypto[]) => {
-        this.dataSource = data;
+      .subscribe((data: ClienteCrypto) => {
+        this.dataSource = data.criptos;
       })
     }
 
@@ -53,7 +57,7 @@ export class CarteiraComponent implements OnInit {
   }
 
 
-  openDialog(element: ClienteCrypto | null): void {
+  openDialog(element: Crypto | null): void {
     const dialogRef = this.dialog.open(ElementSellComponent, {
       width: '250px',
       data: element === null ? {
@@ -66,10 +70,10 @@ export class CarteiraComponent implements OnInit {
 
        } : {
         position: element.position,
-        codigo: element.crypto.codigo,
-        nome: element.crypto.nome,
-        valorCompra: element.crypto.valorCompra,
-        valorVenda: element.crypto.valorVenda,
+        codigo: element.codigo,
+        nome: element.nome,
+        valorCompra: element.valorCompra,
+        valorVenda: element.valorVenda,
         quantidade: element.quantidade
        } 
     });
@@ -80,11 +84,26 @@ export class CarteiraComponent implements OnInit {
      //     this.dataSource[result.position - 1] = result;
       //    this.table.renderRows();
       //  } else {
-          this.carteiraCryptoElementService.vendaCrypto(result)
-          .subscribe((data: ClienteCrypto)=> {
-            this.dataSource.push(result);
-            this.table.renderRows();
+          this.carteiraCryptoElementService.vendaCrypto(1, result)
+          .subscribe((data: Transacao)=> {
+            
+           for(let i =0; i< this.dataSource.length;i++){
+                let cryto: Crypto = this.dataSource[i];
+                if(cryto.codigo==result.codigo){
+                  result.position = i
+                  break
+                }
+           }
+           result.quantidade = data.quantidade;
+           this.dataSource[result.position]=result
+           this.table.renderRows();
         }
+        //   this.carteiraCryptoElementService.vendaCrypto(1, result)
+        //   .subscribe((data: ClienteCrypto)=> {
+        //     this.dataSource.push(result);
+        //     this.table.renderRows();
+        //     console.log(result);
+        // }
         )
       }
     });
@@ -94,7 +113,7 @@ export class CarteiraComponent implements OnInit {
     this.dataSource = this.dataSource.filter(p=> p.position !== position)
   }
 
-  sellElement(element: ClienteCrypto): void{
+  sellElement(element: Crypto): void{
     this.openDialog(element);
   }
   }

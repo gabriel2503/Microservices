@@ -7,6 +7,7 @@ import { CryptoElement } from 'src/app/models/CryptoElement';
 import { CryptoElementService } from 'src/app/services/cryptoElement.service';
 import { CarteiraCryptoElementService } from 'src/app/services/carteiraCryptoElement.service';
 import { ClienteCrypto } from 'src/app/models/ClienteCrypto';
+import { Transacao } from 'src/app/models/Transacao';
 
 
 //  const ELEMENT_DATA: CryptoElement[] = [
@@ -85,8 +86,8 @@ export class HomeComponent implements OnInit {
      //     this.dataSource[result.position - 1] = result;
        //   this.table.renderRows();
         //} else {
-          this.carteiraCryptoElementService.compraCrypto(result)
-          .subscribe((data: ClienteCrypto)=> {
+          this.carteiraCryptoElementService.compraCrypto(1, result)
+          .subscribe((data: Transacao)=> {
             this.dataSource.push(result);
             this.table.renderRows();
           }

@@ -19,7 +19,6 @@ export class ElementSellComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log(this.data)
     if(this.data.position != null){
       this.isChange = true;
     } else {
